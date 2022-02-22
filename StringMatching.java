@@ -22,8 +22,16 @@ public class StringMatching {
 
 
         int count = 0;
-        for(int i = 0; i <= len - sublen; i++) {
-            if(substring.equals(str.substring(i, i+sublen))) {
+        for(int startIndex = 0; startIndex <= len - sublen; startIndex++) {
+            boolean matches = true;
+            for (int substringIndex = 0; substringIndex < sublen; substringIndex++) {
+                if (!(str.charAt(startIndex + substringIndex) == substring.charAt(substringIndex))) {
+                    matches = false;
+                    break;
+                }
+            }
+
+            if(matches) {
                 count++;
             }
         }
